@@ -9,15 +9,19 @@ alias ..="cd ../"
 alias ...="cd ../../"
 alias ....="cd ../../../"
 alias tocode='cd "$CODE_DIR"'
-alias toreact='cd ${CODE_DIR}/gg-react'
-alias toorder='cd ${CODE_DIR}/giftogram-order-site/dev/api'
-alias toapi='cd ${CODE_DIR}/gg-api'
-alias todesigner='cd ${CODE_DIR}/gg-designer'
-alias tocommon='cd ${CODE_DIR}/gg-common'
-alias toadmin='cd ${CODE_DIR}/giftogram-admin'
-alias toc9="ssh c9"
-alias todev='cd ${CODE_DIR}/ggdev'
-alias toms='cd ${CODE_DIR}/microservices'
+
+WORK_DIR="${CODE_DIR}"
+if [[ "$ALIAS_USER" == "todd" ]]; then
+  WORK_DIR+="/giftogram"
+fi
+
+alias toreact='cd ${WORK_DIR}/gg-react'
+alias toorder='cd ${WORK_DIR}/giftogram-order-site/dev/api'
+alias toapi='cd ${WORK_DIR}/gg-api'
+alias todesigner='cd ${WORK_DIR}/gg-designer'
+alias tocommon='cd ${WORK_DIR}/gg-common'
+alias toadmin='cd ${WORK_DIR}/giftogram-admin'
+alias toms='cd ${WORK_DIR}/microservices'
 alias tomsprint="toms && cd gg-microservice-node-print-order"
 
 # Composer
