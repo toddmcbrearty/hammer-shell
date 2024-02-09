@@ -10,10 +10,13 @@ alias ...="cd ../../"
 alias ....="cd ../../../"
 alias tocode='cd "$CODE_DIR"'
 
+# Since i keep my work code in a different directory i have this. you can update it any way you want.
 WORK_DIR="${CODE_DIR}"
 if [[ "$ALIAS_USER" == "todd" ]]; then
   WORK_DIR+="/giftogram"
 fi
+
+alias tohammer='cd ${CODE_DIR}/hammer-shell'
 
 alias toreact='cd ${WORK_DIR}/gg-react'
 alias toorder='cd ${WORK_DIR}/giftogram-order-site/dev/api'
