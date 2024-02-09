@@ -1,0 +1,115 @@
+#!/usr/bin/env bash
+
+APP_NAME="hammer-shell"
+HAMMERSHELL="$APP_NAME"
+export HAMMERSHELL
+
+DO_INSTALL=false
+DO_UNINSTALL=false
+FORCE=false
+FILE=".bash_profile"
+if [[ "$SHELL" == "/bin/zsh" ]]; then
+  FILE=".zshrc"
+fi
+HOME_FILE="$HOME/$FILE"
+
+help() {
+    echo "Syntax: ${ENV_NAME} $APP_NAME [--install|-u|--uninstall|-u]"
+    echo "Options:"
+    echo "  --install | -i install $APP_NAME"
+    echo "  --uninstall | -u uninstall $APP_NAME"
+    echo "At least 1 option is required"
+    echo
+}
+
+uninstallApp() {
+   # create a backup first
+    cp "$HOME_FILE" "$HOME_FILE"_backup
+
+    # remove the command from $HOME_FILE
+    RESULT=$(sed "/# $APP_NAME/,/# end $APP_NAME/d" "$HOME_FILE")
+    echo "$RESULT" > "$HOME_FILE"
+
+    echo "$APP_NAME removed"
+}
+
+installApp() {
+  if grep -Fxq "# $APP_NAME" "$HOME_FILE"; then
+    if [[ "$FORCE" = false ]]; then
+        echo "$APP_NAME is already installed. You'll need to remove it first"
+        read -r -p "Would you like to remove it now? [Y/n]" remove
+
+        shopt -s nocasematch
+        if [[ "$remove" =~ [n|no] ]]; then
+          echo "Remove the $APP_NAME installation text manually to continue"
+          exit 1
+        fi
+      fi
+
+      uninstallApp
+  fi
+
+# add the command to $HOME_FILE
+CODE_DIR=$HOME/Code
+export CODE_DIR
+
+INIT_FILE=$CODE_DIR/$APP_NAME/init
+echo "
+# $APP_NAME
+# DO NOT TOUCH THIS SECTION OTHER THAN TO REMOVE IT
+CODE_DIR=$CODE_DIR
+export CODE_DIR
+HAMMERSHELL=$APP_NAME
+export HAMMERSHELL
+. $INIT_FILE
+# end $APP_NAME
+" >> "$HOME_FILE"
+
+  echo "$APP_NAME installed"
+  echo "You'll need to start a new terminal or run source $HOME_FILE"
+}
+
+if [[ -z "$1" ]]; then
+  help
+fi
+
+while test $# -gt 0; do
+    case "$1" in
+    --install|-i)
+      DO_INSTALL=true
+      shift
+      ;;
+    --uninstall|-u)
+      DO_UNINSTALL=true
+      shift
+      ;;
+    --force|-f)
+      FORCE=true
+      shift
+      ;;
+    help|--help|-h)
+      help
+      shift
+      ;;
+    *)
+      break;
+    esac
+done
+
+if [[ "$DO_INSTALL" == false && "$DO_UNINSTALL" == false ]]; then
+  echo "You can only install or uninstall $APP_NAME, not both"
+  exit 1
+fi
+
+if [[ "$DO_INSTALL" == true && "$DO_UNINSTALL" == true ]]; then
+  echo "You can only install or uninstall $APP_NAME, not both"
+  exit 1
+fi
+
+if [[ "$DO_INSTALL" == true ]]; then
+  installApp
+fi
+
+if [[ "$DO_UNINSTALL" == true ]]; then
+  uninstallApp
+fi

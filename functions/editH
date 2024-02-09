@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+editH() {
+  if [[ "$1" == "shell" ]]; then
+    echo "Sourcing . ~/.zshrc"
+    # shellcheck source=/dev/null
+    vi ~/.zshrc
+    exit 0
+  fi
+
+  if [[ -z "$1" ]]; then
+      FILE="default"
+  else
+    FILE="$1"
+  fi
+
+  if [[ -f "$SCRIPT_DIR/$FILE" ]]; then
+    echo "Editing $SCRIPT_DIR/$FILE"
+    vi "$SCRIPT_DIR/$FILE"
+  else
+    echo "File not found: $SCRIPT_DIR/$FILE"
+  fi
+}

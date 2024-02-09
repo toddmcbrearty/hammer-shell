@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+if [[ -z "${CODE_DIR}" ]]; then
+  echo "You must set the CODE_DIR environment variable in your .bashrc or .bash_profile or .zshrc just above where you source the setup.sh file."
+  echo "Example: export CODE_DIR=\"$HOME/Code\""
+  exit 1
+fi
+
+SCRIPT_DIR="${CODE_DIR}/hammer-shell"
+
+# Install aliases
+. "$SCRIPT_DIR/aliases/default"
+
+# Install functions
+export fpath=($CODE_DIR/hammer-shell/functions $fpath)
+
+FUNCS=()
+
+for entry in "$CODE_DIR"/hammer-shell/functions/*
+do
+  FUNCS+=("$(echo "$entry" | sed 's/.*\///')")
+done
+
+autoload -Uz "${FUNCS[@]}"
