@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+alias start-mysql="brew services start mysql"
+alias stop-mysql="brew services stop mysql"
+alias root-mysql="mysql -u root -p"
+
+helpbrew() {
+    echo 'The following commands are available to assist you with Brew Services:'
+    echo '    start-mysql: Starts the MySQL service `brew services start mysql`'
+    echo '    stop-mysql: Stops the MySQL service `brew services stop mysql`'
+    echo '    root-mysql: Logs into the MySQL service as root `mysql -u root -p`'
+}

@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+alias pest="DB_PORT=3306 vendor/bin/pest"
+alias gg-up="tocommon && DB_PORT=3306 && docker-compose up -d"
+alias update-all-gg-common="toorder && update-gg-common && toapi && update-gg-common"
+alias update-gg-common="composer update giftogram/gg-common"
+alias ugc="update-gg-common"
+alias deploy:lambda="toapi && arti sidecar:deploy --activate"
+alias gglam="tocommon && cd sidecar/lambda"
+alias install_layer="tolambda && cd layers &&  ./install.sh"
+alias tolambda="tocommon && cd sidecar/lambda"
+alias install_layer="tolambda && cd layers &&  ./install.sh"
+alias sym-common="arti developer:sym-link-ggcommon"
+
+# Debug
+alias xdebugtunnel="autossh -M 0 -o \"ServerAliveInterval 30\" -o \"ServerAliveCountMax 3\" -NR 49724:localhost:9000 ubuntu@c9"
+
+giftogramhelp() {
+    echo 'The following commands are available to assist you with Giftogram:'
+    echo "    pest: Runs the pest test suite `DB_PORT=3309 vendor/bin/pest`"
+    echo "    gg-up: Starts the docker containers `tocommon && DB_PORT=3309 && docker-compose up -d`"
+    echo "    update-all-gg-common: Updates the gg-common package in all the repos `toorder && update-gg-common && toapi && update-gg-common`"
+    echo "    update-gg-common: Updates the gg-common package `composer update giftogram/gg-common`"
+    echo "    deploy:lambda: Deploys the lambda `toapi && arti sidecar:deploy --activate`"
+    echo "    gglam: Changes to the lambda directory `tocommon && cd sidecar/lambda`"
+    echo "    install_layer: Installs the layer `tolambda && cd layers &&  ./install.sh`"
+    echo "    tolambda: Changes to the lambda directory `tocommon && cd sidecar/lambda`"
+    echo "    install_layer: Installs the layer `tolambda && cd layers &&  ./install.sh`"
+    echo "    sym-common: Creates a symbolic link to the gg-common package `arti developer:sym-link-ggcommon`"
+    echo ""'    xdebugtunnel: Creates a tunnel for xdebug `autossh -M 0 -o \"ServerAliveInterval 30\" -o \"ServerAliveCountMax 3\" -NR 49724:localhost:9000 xxxxxx@xxx'
+}

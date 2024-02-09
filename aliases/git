@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# Git
+alias gitcm="git checkout master"
+alias gitreset=" git reset --hard HEAD && git clean -f -d"
+alias gitp="git pull"
+alias gitc="git checkout"
+alias gitcmu="gitcm && update-gg-common"
+alias gitignite="gitreset && gitcmu"
+
+githelp() {
+    echo 'The following commands are available to assits you with git:'
+    echo '    gitcm: Checkouts out master `git checkout master`'
+    echo '    gitcmu: Checks out master and updates gg-common `gitcm && update-gg-common`'
+    echo '    gitreset: Does a hard reset and clean on the repo `git reset --hard HEAD && git clean -f -d`'
+    echo '    gitp: Pulls repo `git pull`'
+    echo '    gitc: Checks out repo `git checkout`'
+    echo '    gitignite: Resets the repo, then checks out master and updates-gg-common `gitres && gitcmu`'
+}

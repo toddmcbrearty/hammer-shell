@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+alias arti="php artisan"
+alias run-test="./vendor/bin/pest"
+alias run-test-stop="./vendor/bin/pest --stop-on-failure"
+alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+
+helplaravel() {
+    echo 'The following commands are available to assist you with Laravel:'
+    echo '    arti: Runs the artisan command `php artisan`'
+    echo '    run-test: Runs the pest test suite `./vendor/bin/pest`'
+    echo '    run-test-stop: Runs the pest test suite and stops on failure `./vendor/bin/pest --stop-on-failure`'
+    echo '    sail: Runs the sail command `[ -f sail ] && sh sail || sh vendor/bin/sail`'
+}

@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+alias start-mailhog="brew services start mailhog"
+alias stop-mailhog="brew services stop mailhog"
+alias restart-mailhog="brew services restart mailhog"
+
+helpmailhog() {
+    echo 'The following commands are available to assist you with Mailhog:'
+    echo '    start-mailhog: Starts the Mailhog service `brew services start mailhog`'
+    echo '    stop-mailhog: Stops the Mailhog service `brew services stop mailhog`'
+    echo '    restart-mailhog: Restarts the Mailhog service `brew services restart mailhog`'
+}

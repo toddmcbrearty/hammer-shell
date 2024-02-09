@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+alias cpwd="pwd | tr -d '\n' | pbcopy && echo 'pwd copied to clipboard'"
+alias remove-vendor="rm -rf vendor"
+
+helputilities() {
+    echo 'The following commands are available to assist you with utilities:'
+    echo '    cpwd: Copies the current working directory to the clipboard `pwd | tr -d '\n' | pbcopy && echo 'pwd copied to clipboard'`'
+    echo '    remove-vendor: Removes the vendor directory `rm -rf vendor`'
+}

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+alias npmi="nvm use && npm i"
+alias npmci="nvm use && npm ci"
+alias npmid="npm install --save-dev"
+alias npmis="npm install --save"
+
+npmhelp () {
+    echo 'The following commands are available to assist you with npm:'
+    echo '    npmi: Uses nvm to use the correct node version and then runs `npm i`'
+    echo '    npmci: Uses nvm to use the correct node version and then runs `npm ci`'
+    echo '    npmid: Installs a package as a dev dependency `npm install --save-dev`'
+    echo '    npmis: Installs a package as a dependency `npm install --save`'
+}

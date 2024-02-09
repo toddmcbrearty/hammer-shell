@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+ALIAS_USER=$(whoami)
+export ALIAS_USER
+
+SCRIPT_DIR="${CODE_DIR}/hammer-shell/aliases"
+
+#Shortcuts
+. "$SCRIPT_DIR/shortcuts"
+
+# Tools (For AWS Cloud9 Only)
+if [[ "$ALIAS_USER" == "ubuntu" ]]; then
+  alias runtools="cd ~/environment &&  ./tools"
+fi
+
+if [[ "$ALIAS_USER" == "todd" ]]; then
+  # Brew Services (For OSX Only)
+  . "$SCRIPT_DIR/brew"
+fi
+
+#Mailhog
+. "$SCRIPT_DIR/mailhog"
+
+# Utilities
+. "$SCRIPT_DIR/utilities"
+
+# Laravel
+. "$SCRIPT_DIR/laravel"
+
+# Giftogram Specific
+. "$SCRIPT_DIR/giftogram"
+
+# Redis
+. "$SCRIPT_DIR/redis"
+
+#npm
+. "$SCRIPT_DIR/npm"
+
+#git
+. "$SCRIPT_DIR/git"

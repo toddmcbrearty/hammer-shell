@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+
+# System
+alias ll="ls -l"
+alias lla="ls -la"
+
+# GO TO DIRECTORY
+alias ..="cd ../"
+alias ...="cd ../../"
+alias ....="cd ../../../"
+alias tocode='cd "$CODE_DIR"'
+alias toreact='cd ${CODE_DIR}/gg-react'
+alias toorder='cd ${CODE_DIR}/giftogram-order-site/dev/api'
+alias toapi='cd ${CODE_DIR}/gg-api'
+alias todesigner='cd ${CODE_DIR}/gg-designer'
+alias tocommon='cd ${CODE_DIR}/gg-common'
+alias toadmin='cd ${CODE_DIR}/giftogram-admin'
+alias toc9="ssh c9"
+alias todev='cd ${CODE_DIR}/ggdev'
+alias toms='cd ${CODE_DIR}/microservices'
+alias tomsprint="toms && cd gg-microservice-node-print-order"
+
+# Composer
+alias cp-i="composer install"
+alias cp-u="composer update"
+alias cp-da="composer dumpautoload"
+
+# Bash
+alias src-funcs='$HOME/Code/base/functions/*'
+alias edit-funcs='phpstorm $HOME/Code/base/functions'
+
+# NPM
+alias startreact="toreact && nvm use && npm run start"
+alias startdesigner="todesigner && npm run start"
+alias sr="startreact"
+alias sd="startdesigner"
+
+# SSH SHORTCUTS
+if [[ "$ALIAS_USER" == "todd" ]]; then
+    alias c9="ssh c9"
+fi
+
+helpshortcuts() {
+    echo 'The following commands are available to assist you with shortcuts:'
+    echo '    ll: Lists all files in the current directory in long format'
+    echo '    lla: Lists all files in the current directory in long format including hidden files'
+    echo '    ..: Go up one directory'
+    echo '    ...: Go up two directories'
+    echo '    ....: Go up three directories'
+    echo '    tocode: Go to the Code directory'
+    echo '    toreact: Go to the gg-react directory'
+    echo '    toorder: Go to the gg-ordersite/dev/api directory'
+    echo '    toapi: Go to the gg-api directory'
+    echo '    todesigner: Go to the gg-designer directory'
+    echo '    tocommon: Go to the gg-common directory'
+    echo '    toadmin: Go to the gg-admin directory'
+    echo '    toc9: SSH into the c9 server'
+    echo '    todev: Go to the ggdev directory'
+    echo '    toms: Go to the microservices directory'
+    echo '    cp-i: Run `composer install`'
+    echo '    cp-u: Run `composer update`'
+    echo '    cp-da: Run `composer dumpautoload`'
+    echo '    edit-a: Open the .aliases file in VS Code'
+    echo '    cat-a: Display the contents of the .aliases file'
+    echo '    src-a: Source the .aliases file'
+    echo '    src-funcs: Source all the files in the .zsh_functions directory'
+    echo '    edit-funcs: Open the .zsh_functions directory in VS Code'
+    echo '    startreact: Go to the gg-react directory, use the correct node version, and run `npm run start`'
+    echo '    startdesigner: Go to the gg-designer directory, and run `npm run start`'
+    echo '    sr: Shortcut for `startreact`'
+    echo '    sd: Shortcut for `startdesigner`'
+    echo '    c9: SSH into the c9 server'
+    echo '    helpshortcuts: Display this help message'
+}
