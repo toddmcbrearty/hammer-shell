@@ -11,6 +11,7 @@ alias install_layer="tolambda && cd layers &&  ./install.sh"
 alias tolambda="tocommon && cd sidecar/lambda"
 alias install_layer="tolambda && cd layers &&  ./install.sh"
 alias sym-common="arti developer:sym-link-ggcommon"
+alias ggrefresh="toorder && gitignite && toapi && gitignite && update-all-gg-common"
 
 # Debug
 alias xdebugtunnel="autossh -M 0 -o \"ServerAliveInterval 30\" -o \"ServerAliveCountMax 3\" -NR 49724:localhost:9000 ubuntu@c9"
@@ -22,9 +23,8 @@ giftogramhelp() {
     echo "    update-all-gg-common: Updates the gg-common package in all the repos `toorder && update-gg-common && toapi && update-gg-common`"
     echo "    update-gg-common: Updates the gg-common package `composer update giftogram/gg-common`"
     echo "    deploy:lambda: Deploys the lambda `toapi && arti sidecar:deploy --activate`"
-    echo "    gglam: Changes to the lambda directory `tocommon && cd sidecar/lambda`"
     echo "    install_layer: Installs the layer `tolambda && cd layers &&  ./install.sh`"
-    echo "    tolambda: Changes to the lambda directory `tocommon && cd sidecar/lambda`"
+    echo "    tolambda: Changes to the lambda directory `tocommon && cd sidecar/lambda || exit 1`"
     echo "    install_layer: Installs the layer `tolambda && cd layers &&  ./install.sh`"
     echo "    sym-common: Creates a symbolic link to the gg-common package `arti developer:sym-link-ggcommon`"
     echo ""'    xdebugtunnel: Creates a tunnel for xdebug `autossh -M 0 -o \"ServerAliveInterval 30\" -o \"ServerAliveCountMax 3\" -NR 49724:localhost:9000 xxxxxx@xxx'

@@ -44,7 +44,7 @@ alias sd="startdesigner"
 
 # SSH SHORTCUTS
 if [[ "$ALIAS_USER" == "todd" ]]; then
-    alias c9="ssh c9"
+    alias toc9="ssh c9"
 fi
 
 helpshortcuts() {
